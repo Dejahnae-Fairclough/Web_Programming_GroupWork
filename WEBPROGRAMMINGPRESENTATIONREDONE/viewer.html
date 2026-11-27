@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--
+    CIT2011 Web Programming - Group Project
+    Group Members:
+    1. Shemar Lindo - 2401825 [Student 4]- Friday, 8:00 AM
+    2. Justin Francis - 2508413 [Student 5]- Friday, 8:00 AM
+    3. Sashkea Angrin - 2403272 [Student 1]- Friday, 8:00 AM
+    4. Dejahnae Fairclough - 2406846 [Student 3] - Friday, 8:00 AM
+    5. Kofi Foster - 2403233 [Student 2] - Friday, 8:00 AM
+    Lab: Friday 8:00 AM
+-->
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Ledger &amp; Read-Only Viewer | Meadowbrook High School</title>
+    <link rel="stylesheet" href="css/teacher.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <div class="school-brand">
+                <p class="school-name">Meadowbrook High School</p>
+                <p class="school-motto">Ita Splendeat Lux Vestra &middot; Let Your Light So Shine</p>
+            </div>
+            <nav aria-label="Viewer navigation">
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#searchMatrixSection">Universal Search</a></li>
+                    <li><a href="#gradesDirectorySection">Grades Directory</a></li>
+                    <li><button type="button" id="logoutButton" class="link-button">Log out</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="accessNotice" class="access-notice" hidden>
+        <h1>Authorized users only</h1>
+        <p>You need to sign in to view financial statements and student records.</p>
+        <p><a href="login.html" class="button button-primary">Go to login</a></p>
+        <p><button type="button" id="demoViewerButton" class="button button-secondary">Continue as demo viewer (testing)</button></p>
+    </section>
+
+    <main id="viewerPanel" class="teacher-panel" hidden>
+
+        <section class="welcome-banner">
+            <h1>Financial Ledger &amp; Read-Only Records</h1>
+            <p>
+                Welcome, <strong id="viewerNameText"></strong> (<span id="viewerRoleText"></span>).
+                All student, grade, and tuition records are read-only.
+            </p>
+        </section>
+
+        <section class="card" aria-labelledby="financeSummaryHeading">
+            <h2 id="financeSummaryHeading">1. Tuition Financial Overview (2026/2027)</h2>
+            <dl class="summary-grid">
+                <div><dt>Total Tuition Billed</dt><dd id="finTotalBilled">$0</dd></div>
+                <div><dt>Total Collected</dt><dd id="finTotalCollected">$0</dd></div>
+                <div><dt>Paid Accounts</dt><dd id="finPaidCount">0</dd></div>
+                <div><dt>Pending / Outstanding</dt><dd id="finUnpaidCount">0</dd></div>
+            </dl>
+        </section>
+
+        <section id="searchMatrixSection" class="card" aria-labelledby="searchMatrixHeading">
+            <div class="section-heading-row">
+                <h2 id="searchMatrixHeading">2. Universal Search Matrix</h2>
+                <p id="matchCountText" class="context-text">0 student(s)</p>
+            </div>
+            <p class="help-text">Search student profiles, grade averages, and tuition balances. Records cannot be edited here.</p>
+
+            <div class="filter-grid">
+                <div class="form-field">
+                    <label for="searchQueryInput">Student Name or ID</label>
+                    <input type="text" id="searchQueryInput" class="text-input" placeholder="e.g. Aaliyah or S1001">
+                </div>
+                <div class="form-field">
+                    <label for="gradeFilterSelect">Grade Level</label>
+                    <select id="gradeFilterSelect">
+                        <option value="ALL">All Grades (7–13)</option>
+                        <option value="7">Grade 7</option>
+                        <option value="8">Grade 8</option>
+                        <option value="9">Grade 9</option>
+                        <option value="10">Grade 10</option>
+                        <option value="11">Grade 11</option>
+                        <option value="12">Grade 12</option>
+                        <option value="13">Grade 13</option>
+                    </select>
+                </div>
+                <div class="form-field">
+                    <label for="feeStatusSelect">Tuition Status</label>
+                    <select id="feeStatusSelect">
+                        <option value="ALL">All Statuses</option>
+                        <option value="Paid">Paid</option>
+                        <option value="Pending">Pending</option>
+                        <option value="Outstanding">Outstanding</option>
+                    </select>
+                </div>
+                <div class="form-actions">
+                    <button type="button" id="resetFiltersButton" class="button button-secondary">Reset</button>
+                    <button type="button" id="printViewerButton" class="button button-primary no-print">Print Report</button>
+                </div>
+            </div>
+
+            <div class="table-wrapper" style="margin-top:1.25rem">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Student Name</th>
+                            <th scope="col">Class</th>
+                            <th scope="col">Subjects Graded</th>
+                            <th scope="col">Term 1 Avg</th>
+                            <th scope="col">Tuition Paid</th>
+                            <th scope="col">Balance Due</th>
+                            <th scope="col">Fee Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="universalMatrixBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="gradesDirectorySection" class="card" aria-labelledby="gradesDirectoryHeading">
+            <div class="section-heading-row">
+                <h2 id="gradesDirectoryHeading">3. Read-Only Academic Grades Directory</h2>
+                <div class="form-field" style="min-width:210px">
+                    <label for="subjectFilterSelect" class="visually-hidden">Filter grades by subject</label>
+                    <select id="subjectFilterSelect">
+                        <option value="ALL">All Subjects</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="table-wrapper" style="margin-top:.75rem">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Student ID</th>
+                            <th scope="col">Student Name</th>
+                            <th scope="col">Subject</th>
+                            <th scope="col">Term</th>
+                            <th scope="col">Coursework /40</th>
+                            <th scope="col">Exam /60</th>
+                            <th scope="col">Total /100</th>
+                            <th scope="col">Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody id="readonlyGradesBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 Meadowbrook High School &middot; 2 Meadowbrook Avenue, Kingston 19, Jamaica</p>
+        <p>School Portal - CIT2011 Web Programming Group Project</p>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/mock-data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/viewer.js"></script>
+
+</body>
+</html>

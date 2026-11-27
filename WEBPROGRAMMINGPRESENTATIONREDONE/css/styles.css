@@ -1,0 +1,780 @@
+/*
+CIT2011 Web Programming - Group Project
+Group Members:
+1. Shemar Lindo - 2401825 [Student 4] - Friday, 8:00 AM
+2. Justin Francis - 2508413 [Student 5] - Friday, 8:00 AM
+3. Sashkea Angrin - 2403272 [Student 1] - Friday, 8:00 AM
+4. Dejahnae Fairclough - 2406846 [Student 3] - Friday, 8:00 AM
+5. Kofi Foster - 2403233 [Student 2] - Friday, 8:00 AM
+Lab: Friday, 8:00 AM
+
+    File: css/styles.css
+Owner: Sashkea Angrin - 2403272
+*/
+
+
+/* Variables */
+:root {
+    --navy-dark: #05132F;
+    --navy-light: #0C214A;
+    --accent-yellow: #FFD100;
+    --text-white: #fff;
+    --text-gray: #A0B2C6;
+    --bg-light: #F4F7F6;
+    --font-heading: Georgia, 'Times New Roman', serif;
+    --font-body: Arial, Helvetica, sans-serif;
+}
+
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: #333;
+    background: var(--bg-light);
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: normal;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 4rem 2rem;
+}
+
+.section-spacing {
+    padding: 5rem 2rem;
+}
+
+.text-left {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+/* Navigation */
+.top-bar {
+    background: var(--navy-dark);
+    color: var(--text-white);
+    padding: .5rem 0;
+    font-size: .85rem;
+}
+
+.top-bar-container, .notice-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+}
+
+.top-bar-container {
+    justify-content: space-between;
+}
+
+header {
+    background: var(--text-white);
+    box-shadow: 0 2px 10px rgba(0,0,0,.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-img {
+    height: 70px;
+    width: auto;
+}
+
+.logo-text {
+    font: 1.5rem/1.1 var(--font-heading);
+    color: var(--navy-dark);
+}
+
+    .logo-text span {
+        display: block;
+        font: .7rem var(--font-body);
+        letter-spacing: 2px;
+        color: #666;
+        text-transform: uppercase;
+    }
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+    .nav-links a {
+        color: var(--navy-dark);
+        font-size: .95rem;
+        font-weight: bold;
+        transition: color .3s;
+    }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #0056b3;
+        }
+
+.btn-portal {
+    background: var(--navy-dark);
+    color: var(--text-white) !important;
+    padding: .7rem 1.5rem;
+    border-radius: 4px;
+    transition: background .3s;
+}
+
+    .btn-portal:hover {
+        background: #0056b3;
+    }
+
+/* Notice Board */
+.notice-bar {
+    background: var(--text-white);
+    border: 1px solid #eee;
+    border-left: 0;
+    border-right: 0;
+    padding: .8rem 0;
+    font-size: .85rem;
+}
+
+.notice-container {
+    gap: 2rem;
+}
+
+.notice-btn {
+    background: var(--navy-dark);
+    color: var(--text-white);
+    padding: .4rem 1rem;
+    border-radius: 20px;
+    font-size: .75rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.notice-list {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: #555;
+}
+
+    .notice-list span::before {
+        content: "•";
+        color: var(--accent-yellow);
+        margin-right: 5px;
+    }
+
+.notice-all-link {
+    margin-left: auto;
+    color: #0056b3;
+    font-weight: bold;
+}
+
+/* Home Page */
+.hero {
+    background: linear-gradient(rgba(5,19,47,.85), rgba(5,19,47,.85)), url('../images/MURALNOCOPY.jpeg') center/cover;
+    color: var(--text-white);
+    padding: 8rem 2rem;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.hero .eyebrow, .welcome-text .eyebrow,
+.commitments-header .eyebrow, .contact-hero-left .eyebrow {
+    display: block;
+    font-size: .85rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.hero .eyebrow, .commitments-header .eyebrow,
+.contact-hero-left .eyebrow {
+    color: var(--accent-yellow);
+    text-transform: uppercase;
+}
+
+.hero .eyebrow {
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+    font-size: 5rem;
+    line-height: 1.1;
+    max-width: 800px;
+    margin-bottom: 2rem;
+}
+
+    .hero h1 em {
+        color: var(--accent-yellow);
+    }
+
+.hero p {
+    max-width: 600px;
+    color: #D0D9E5;
+    font-size: 1.2rem;
+    margin-bottom: 2.5rem;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: all .3s;
+}
+
+.btn-primary {
+    background: var(--accent-yellow);
+    color: var(--navy-dark);
+}
+
+    .btn-primary:hover {
+        background: #e6bc00;
+    }
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-white);
+    border: 1px solid var(--text-white);
+}
+
+    .btn-secondary:hover {
+        background: var(--text-white);
+        color: var(--navy-dark);
+    }
+
+/* Principal */
+.welcome-section {
+    max-width: 1000px;
+    margin: auto;
+    padding: 6rem 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: 4rem;
+    align-items: center;
+    background: var(--text-white);
+}
+
+.principal-image {
+    width: 100%;
+    height: 400px;
+    background: #ddd url('../images/Meadowbrook_Principal.jpg') center/cover;
+    border-radius: 8px;
+}
+
+.principal-info {
+    margin-top: 1.5rem;
+}
+
+    .principal-info .name {
+        font: bold 1.2rem var(--font-heading);
+        color: var(--navy-dark);
+    }
+
+    .principal-info .title {
+        font-size: .8rem;
+        color: #666;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+.welcome-text .eyebrow {
+    color: var(--navy-dark);
+    font-size: .8rem;
+}
+
+.welcome-text h2 {
+    color: var(--navy-dark);
+    font-size: 2.8rem;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+}
+
+blockquote {
+    font: italic 1.5rem var(--font-heading);
+    color: #0056b3;
+    margin-bottom: 1rem;
+}
+
+.quote-author {
+    font-size: .8rem;
+    color: #666;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+}
+
+.welcome-text p {
+    color: #444;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.read-more {
+    color: #0056b3;
+    font-weight: bold;
+    font-size: .95rem;
+}
+
+/* Commitments */
+.commitments-section {
+    background: var(--navy-dark);
+    color: var(--text-white);
+    padding: 6rem 2rem;
+}
+
+.commitments-container {
+    max-width: 1200px;
+    margin: auto;
+}
+
+.commitments-header {
+    max-width: 700px;
+    margin-bottom: 4rem;
+}
+
+    .commitments-header h2 {
+        color: var(--accent-yellow);
+        font-size: 3rem;
+        line-height: 1.2;
+        margin-bottom: .5rem;
+    }
+
+    .commitments-header p {
+        color: var(--text-white);
+        font-size: 1.2rem;
+    }
+
+.commitments-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+    .commitments-grid.min-300 {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+.commitment-card {
+    background: var(--navy-light);
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(255,255,255,.05);
+    border-radius: 8px;
+    transition: transform .3s;
+}
+
+    .commitment-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .commitment-card .number {
+        display: block;
+        color: var(--accent-yellow);
+        font: 2rem var(--font-heading);
+        margin-bottom: 1.5rem;
+    }
+
+    .commitment-card h4 {
+        color: var(--accent-yellow);
+        font-size: 1.3rem;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+    }
+
+    .commitment-card p {
+        color: var(--text-gray);
+        font-size: .95rem;
+    }
+
+/* About Page */
+.page-header {
+    background: var(--navy-dark);
+    color: var(--text-white);
+    text-align: center;
+    padding: 6rem 2rem;
+    border-bottom: 4px solid var(--accent-yellow);
+}
+
+    .page-header h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .page-header p {
+        color: var(--accent-yellow);
+        font-size: 1.2rem;
+    }
+
+.history-text {
+    max-width: 900px;
+    color: #444;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+    .history-text p {
+        margin-bottom: 1.5rem;
+    }
+
+.faculty-desc {
+    max-width: 600px;
+    color: #555;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+}
+
+.faculty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+}
+
+.faculty-card {
+    background: var(--text-white);
+    border-left: 4px solid #1D5C42;
+    padding: 2rem 1.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,.03);
+    display: flex;
+    flex-direction: column;
+}
+
+    .faculty-card .dept-name {
+        color: #1D5C42;
+        font-size: .75rem;
+        font-weight: bold;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        margin-bottom: .8rem;
+    }
+
+    .faculty-card h3 {
+        color: #111;
+        font-size: 1.4rem;
+        margin-bottom: .5rem;
+    }
+
+    .faculty-card .dept-title {
+        color: #777;
+        font-size: .9rem;
+        margin-top: auto;
+    }
+
+/* Contact Page */
+.contact-hero {
+    display: flex;
+    background: var(--navy-dark);
+    min-height: 400px;
+}
+
+.contact-hero-left {
+    width: 100%;
+    padding: 5rem 10%;
+    color: var(--text-white);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.breadcrumbs {
+    color: var(--text-gray);
+    font-size: .85rem;
+    margin-bottom: 2rem;
+}
+
+.contact-hero-left h1 {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+}
+
+.heading-line {
+    width: 60px;
+    height: 3px;
+    background: var(--accent-yellow);
+    border: none;
+    margin: 0 0 2rem;
+}
+
+.hero-desc {
+    max-width: 600px;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+}
+
+.btn-yellow, .btn-outline {
+    display: inline-block;
+    padding: 1rem 2rem;
+    font-weight: bold;
+    border-radius: 2px;
+}
+
+.btn-yellow {
+    background: var(--accent-yellow);
+    color: var(--navy-dark);
+}
+
+.btn-outline {
+    color: var(--text-white);
+    border: 1px solid var(--text-white);
+    transition: all .3s;
+}
+
+    .btn-outline:hover {
+        background: var(--text-white);
+        color: var(--navy-dark);
+    }
+
+.contact-info-section, .contact-form-section {
+    background: var(--text-white);
+    padding: 6rem 0;
+}
+
+.eyebrow.text-gray {
+    color: #666;
+}
+
+.section-title {
+    color: #111;
+    font-size: 3rem;
+    margin: .5rem 0 3rem;
+}
+
+.info-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.info-card {
+    background: #FAFAFA;
+    padding: 3rem 2rem;
+    border: 1px solid #eee;
+    border-top: 4px solid var(--navy-dark);
+}
+
+    .info-card h3 {
+        color: #111;
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+.info-bold {
+    color: #111;
+    font-size: 1.15rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.info-small {
+    color: #0056b3;
+    font-size: .9rem;
+    font-weight: bold;
+    margin-bottom: .2rem;
+}
+
+.info-sub {
+    color: #666;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+/* Contact Form */
+.form-split-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+}
+
+.form-text-content p {
+    color: #555;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.form-container {
+    background: #FAF6EE;
+    padding: 3rem;
+    border-radius: 4px;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+    .form-group label {
+        display: block;
+        color: #111;
+        font-size: .9rem;
+        font-weight: bold;
+        margin-bottom: .5rem;
+    }
+
+    .form-group input, .form-group select, .form-group textarea {
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #ddd;
+        background: var(--text-white);
+        font-family: var(--font-body);
+        font-size: 1rem;
+    }
+
+        .form-group input:focus, .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--navy-dark);
+        }
+
+.btn-submit {
+    background: var(--navy-dark);
+    color: var(--text-white);
+    padding: 1rem 2.5rem;
+    border: none;
+    border-radius: 2px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: auto;
+    transition: background .3s;
+}
+
+    .btn-submit:hover {
+        background: var(--navy-light);
+    }
+
+/* Footer */
+footer {
+    background: var(--navy-dark);
+    color: var(--text-gray);
+    padding: 3rem 0;
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,.1);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .commitments-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .info-cards-grid, .form-split-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-split-grid {
+        gap: 3rem;
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-container, .nav-links, .top-bar-container,
+    .notice-container, .notice-list {
+        flex-direction: column;
+    }
+
+    .nav-container, .nav-links, .notice-container {
+        gap: 1rem;
+    }
+
+    .nav-links, .notice-container {
+        text-align: center;
+    }
+
+    .top-bar-container {
+        gap: .5rem;
+    }
+
+    .notice-list {
+        gap: .5rem;
+    }
+
+    .notice-all-link {
+        margin-left: 0;
+    }
+
+    .hero {
+        position: relative;
+        background-image: url("../images/Meadowbrook_Mural.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 550px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+    .welcome-section, .commitments-grid, .faculty-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .welcome-section {
+        gap: 2rem;
+    }
+}

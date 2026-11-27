@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Meadowbrook High School Portal</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="images/Meadowbrook_High_School_Logo.png">
+</head>
+<body>
+
+    <!--
+        CIT2011 Web Programming - Group Project
+        Group Members:
+        1. Shemar Lindo - 2401825 [Student 4]- Friday, 8:00 AM
+        2. Justin Francis - 2508413 [Student 5]- Friday, 8:00 AM
+        3. Sashkea Angrin - 2403272 [Student 1]- Friday, 8:00 AM
+        4. Dejahnae Fairclough - 2406846 [Student 3] - Friday, 8:00 AM
+        5. Kofi Foster - 2403233 [Student 2] - Friday, 8:00 AM
+        Lab: Friday 8:00 AM
+    -->
+
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/Meadowbrook_High_School_Logo.png" alt="Meadowbrook Crest" class="logo-img">
+                <div class="logo-text">
+                    Meadowbrook
+                    <span>Admin Dashboard</span>
+                </div>
+            </a>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="Admin_Dashboard.html" class="active">Student Registry</a></li>
+                    <li><a href="#" onclick="logoutUser(); return false;" class="btn-portal">Log Out</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="form-container" style="margin-bottom: 2.5rem;">
+            <h2>Register / Update Student</h2>
+            <p style="margin-bottom: 1.5rem; color: #555;">Add or update student records.</p>
+
+            <form id="studentForm">
+
+                <div class="form-group">
+                    <label for="studentID">Student ID:</label>
+                    <input type="text" id="studentID" placeholder="e.g., S1057" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="studentName">Student Name:</label>
+                    <input type="text" id="studentName" placeholder="Full Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="studentClass">Class / Cohort:</label>
+                    <select id="studentClass" required>
+                        <option value="">Select Class</option>
+                        <option value="Grade 7">Grade 7</option>
+                        <option value="Grade 8">Grade 8</option>
+                        <option value="Grade 9">Grade 9</option>
+                        <option value="Grade 10">Grade 10</option>
+                        <option value="Grade 11">Grade 11</option>
+                        <option value="Grade 12">Grade 12</option>
+                        <option value="Grade 13">Grade 13</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="studentStatus">Status:</label>
+                    <select id="studentStatus">
+                        <option value="Active">Active</option>
+                        <option value="Inactive">Inactive</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="saveButton" class="btn-submit">Add Student</button>
+            </form>
+        </section>
+
+        <section>
+            <h2>Student Records</h2>
+
+            <div style="overflow-x: auto; margin-top: 1rem;">
+                <table style="width: 100%; border-collapse: collapse; background: #fff;">
+                    <thead>
+                        <tr style="background: var(--navy-dark); color: #fff; text-align: left;">
+                            <th style="padding: 0.75rem;">Student ID</th>
+                            <th style="padding: 0.75rem;">Name</th>
+                            <th style="padding: 0.75rem;">Class</th>
+                            <th style="padding: 0.75rem;">Status</th>
+                            <th style="padding: 0.75rem;">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTable"></tbody>
+                </table>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Meadowbrook High School. All Rights Reserved.</p>
+            <p>2 Meadowbrook Avenue, Kingston 19, Jamaica</p>
+        </div>
+    </footer>
+
+    <script src="js/storage.js"></script>
+    <script src="js/mock-data.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/Student_Records.js"></script>
+
+</body>
+</html>

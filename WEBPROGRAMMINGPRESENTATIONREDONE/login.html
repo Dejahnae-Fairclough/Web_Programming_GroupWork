@@ -1,0 +1,181 @@
+
+<!--
+    CIT2011 Web Programming - Group Project
+    Project: Meadowbrook High School Portal
+
+    Group Members:
+    1. Shemar Lindo - 2401825 [Student 4] - Friday, 8:00 AM
+    2. Justin Francis - 2508413 [Student 5] - Friday, 8:00 AM
+    3. Sashkea Angrin - 2403272 [Student 1] - Friday, 8:00 AM
+    4. Dejahnae Fairclough - 2406846 [Student 3] - Friday, 8:00 AM
+    5. Kofi Foster - 2403233 [Student 2] - Friday, 8:00 AM
+
+    Lab: Friday, 8:00 AM
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Page settings and external resources -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Login - Meadowbrook High School</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" type="image/png"
+        href="images/Meadowbrook_High_School_Logo.png">
+</head>
+
+<body>
+
+    <!-- School contact information -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="top-phone">(876) 924-2631</div>
+        </div>
+    </div>
+
+    <!-- School logo and website navigation -->
+    <header>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/Meadowbrook_High_School_Logo.png"
+                    alt="Meadowbrook High School Crest"
+                    class="logo-img">
+
+                <div class="logo-text">
+                    Meadowbrook
+                    <span>High School</span>
+                </div>
+            </a>
+
+            <!-- Navigation links to the other website pages -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li>
+                        <a href="login.html" class="btn-portal active">
+                            Portal Login
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Portal notice and return link -->
+    <div class="notice-bar">
+        <div class="notice-container">
+            <span class="notice-btn">NOTICE BOARD</span>
+            <div class="notice-list">
+                <span>Meadowbrook High School Portal</span>
+                <span>2 Meadowbrook Avenue, Kingston 19</span>
+                <a href="index.html" class="notice-all-link">
+                    &larr; Back to Home
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main login section -->
+    <main class="container">
+        <div class="form-container"
+            style="max-width: 520px; margin: 0 auto;">
+
+            <span class="eyebrow text-gray">
+                AUTHENTICATION PORTAL
+            </span>
+
+            <h1 style="font-size: 2.2rem; color: var(--navy-dark);
+                margin-bottom: 0.5rem;">
+                Sign In
+            </h1>
+
+            <p style="color: #555; margin-bottom: 1.5rem;">
+                Enter your username and password to open your role dashboard.
+            </p>
+
+            <!-- Login form handled by the authentication JavaScript -->
+            <form id="loginForm" novalidate>
+
+                <div class="form-group">
+                    <label for="loginUsername">Username</label>
+
+                    <!-- Username entered by the user -->
+                    <input type="text"
+                        id="loginUsername"
+                        name="loginUsername"
+                        placeholder="e.g., admin or tbrown"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+
+                    <!-- Password field hides the characters entered -->
+                    <input type="password"
+                        id="loginPassword"
+                        name="loginPassword"
+                        placeholder="Enter your password"
+                        required>
+                </div>
+
+                <!-- JavaScript displays login errors in this area -->
+                <div id="loginError"
+                    role="alert"
+                    style="color: #b42318; font-weight: bold;
+                    margin-bottom: 1rem; min-height: 1.2rem;">
+                </div>
+
+                <button type="submit"
+                    class="btn-submit"
+                    style="width: 100%;">
+                    Sign In
+                </button>
+            </form>
+
+            <!-- Sample accounts for testing the different user roles -->
+            <div style="margin-top: 1.5rem; padding-top: 1rem;
+                border-top: 1px solid #e2dccd;
+                font-size: 0.9rem; color: #555;">
+
+                <p style="margin-bottom: 0.4rem;">
+                    <strong>
+                        Sample Accounts (Password:
+                        <code>Password123!</code>):
+                    </strong>
+                </p>
+
+                <p style="margin-bottom: 0.25rem;">
+                    Admin: <code>admin</code> &rarr; Student Registry
+                </p>
+
+                <p style="margin-bottom: 0.25rem;">
+                    Teacher: <code>tbrown</code> or
+                    <code>tcampbell</code> &rarr; Teacher Panel
+                </p>
+
+                <p>
+                    Viewer: <code>viewer1</code> &rarr; Read-Only Viewer
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- School copyright and address -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Meadowbrook High School. All Rights Reserved.</p>
+            <p>2 Meadowbrook Avenue, Kingston 19, Jamaica</p>
+        </div>
+    </footer>
+
+    <!-- Load required JavaScript files in dependency order -->
+    <script src="js/storage.js"></script>
+    <script src="js/mock-data.js"></script>
+    <script src="js/auth.js"></script>
+
+</body>
+</html>

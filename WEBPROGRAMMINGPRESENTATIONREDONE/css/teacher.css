@@ -1,0 +1,666 @@
+/*
+CIT2011 Web Programming - Group Project
+Group Members:
+1. Shemar Lindo - 2401825 [Student 4] - Friday, 8:00 AM
+2. Justin Francis - 2508413 [Student 5] - Friday, 8:00 AM
+3. Sashkea Angrin - 2403272 [Student 1] - Friday, 8:00 AM
+4. Dejahnae Fairclough - 2406846 [Student 3] - Friday, 8:00 AM
+5. Kofi Foster - 2403233 [Student 2] - Friday, 8:00 AM
+Lab: Friday, 8:00 AM
+*/
+
+:root {
+    --colour-primary: #163f8c;
+    --colour-primary-dark: #0f2d66;
+    --colour-accent: #2f9e57;
+    --colour-background: #f3f5f9;
+    --colour-surface: #fff;
+    --colour-text: #1f2430;
+    --colour-muted: #5b6475;
+    --colour-border: #d6dbe4;
+    --colour-success: #1e7a46;
+    --colour-error: #b42318;
+    --colour-warning: #a15c00;
+    --radius: 8px;
+    --shadow: 0 1px 3px rgba(20,30,50,.12);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font: 16px/1.5 "Segoe UI", Arial, Helvetica, sans-serif;
+    color: var(--colour-text);
+    background: var(--colour-background);
+}
+
+[hidden] {
+    display: none !important;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+/* Header and footer */
+.site-header {
+    background: var(--colour-primary);
+    color: #fff;
+    border-bottom: 4px solid var(--colour-accent);
+}
+
+.header-inner {
+    max-width: 1100px;
+    margin: auto;
+    padding: .75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.school-name, .school-motto, .site-footer p {
+    margin: 0;
+}
+
+.school-name {
+    font-size: 1.15rem;
+    font-weight: 700;
+}
+
+.school-motto {
+    font-size: .8rem;
+    font-style: italic;
+    opacity: .85;
+}
+
+.nav-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+    .nav-list a, .link-button {
+        color: #fff;
+        text-decoration: none;
+        font: inherit;
+    }
+
+        .nav-list a:hover, .link-button:hover {
+            text-decoration: underline;
+        }
+
+.link-button {
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.site-footer {
+    margin-top: auto;
+    padding: 1rem;
+    text-align: center;
+    font-size: .875rem;
+    color: var(--colour-muted);
+}
+
+    .site-footer p {
+        margin: .15rem 0;
+    }
+
+/* Page and cards */
+.teacher-panel, .access-notice {
+    width: 100%;
+    max-width: 1100px;
+    margin: auto;
+    padding: 1.5rem 1rem;
+}
+
+.access-notice {
+    text-align: center;
+}
+
+.welcome-banner h1 {
+    margin: 0 0 .25rem;
+    color: var(--colour-primary);
+}
+
+.welcome-banner p {
+    margin: 0 0 1rem;
+    color: var(--colour-muted);
+}
+
+.card {
+    background: var(--colour-surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+    .card h2 {
+        margin-top: 0;
+        font-size: 1.3rem;
+        color: var(--colour-primary);
+    }
+
+.section-heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: .5rem;
+}
+
+.context-text {
+    margin: 0;
+    font-weight: 600;
+    color: var(--colour-muted);
+}
+
+.help-text {
+    color: var(--colour-muted);
+    font-size: .925rem;
+}
+
+kbd, code {
+    background: var(--colour-background);
+    border: 1px solid var(--colour-border);
+    border-radius: 4px;
+    padding: 0 .3rem;
+    font-size: .85em;
+}
+
+/* Step tracker */
+.step-tracker {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.25rem;
+    counter-reset: step;
+}
+
+    .step-tracker li {
+        counter-increment: step;
+        padding: .5rem;
+        border-radius: var(--radius);
+        background: var(--colour-background);
+        color: var(--colour-muted);
+        text-align: center;
+        font-size: .9rem;
+        border-bottom: 3px solid var(--colour-border);
+    }
+
+        .step-tracker li::before {
+            content: counter(step) ". ";
+            font-weight: 700;
+        }
+
+        .step-tracker li.step-active {
+            color: var(--colour-primary);
+            border-bottom-color: var(--colour-primary);
+            font-weight: 600;
+        }
+
+        .step-tracker li.step-done {
+            color: var(--colour-success);
+            border-bottom-color: var(--colour-success);
+        }
+
+            .step-tracker li.step-done::before {
+                content: "\2713  ";
+            }
+
+/* Forms */
+.filter-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1rem;
+    align-items: end;
+}
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+    .form-field label {
+        font-size: .9rem;
+        font-weight: 600;
+    }
+
+select, textarea, .score-input, .text-input {
+    width: 100%;
+    font: inherit;
+    padding: .5rem .6rem;
+    border: 1px solid var(--colour-border);
+    border-radius: 6px;
+    background: #fff;
+    color: var(--colour-text);
+}
+
+    select:disabled {
+        background: var(--colour-background);
+        color: var(--colour-muted);
+        cursor: not-allowed;
+    }
+
+    select:focus, textarea:focus, .score-input:focus {
+        outline: 2px solid var(--colour-accent);
+        outline-offset: 1px;
+    }
+
+textarea {
+    width: 100%;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+    margin-top: 1rem;
+}
+
+.filter-grid .form-actions {
+    margin-top: 0;
+}
+
+/* Buttons */
+.button {
+    display: inline-block;
+    padding: .55rem 1.1rem;
+    border: 2px solid var(--colour-primary);
+    border-radius: 6px;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color .15s ease;
+}
+
+.button-primary {
+    background: var(--colour-primary);
+    color: #fff;
+}
+
+    .button-primary:hover:not(:disabled) {
+        background: var(--colour-primary-dark);
+    }
+
+.button-secondary {
+    background: #fff;
+    color: var(--colour-primary);
+}
+
+    .button-secondary:hover:not(:disabled) {
+        background: var(--colour-background);
+    }
+
+.button:disabled {
+    opacity: .5;
+    cursor: not-allowed;
+}
+
+/* Tables and score fields */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: .95rem;
+}
+
+    .data-table th, .data-table td {
+        padding: .55rem .6rem;
+        border-bottom: 1px solid var(--colour-border);
+        text-align: left;
+        vertical-align: top;
+    }
+
+    .data-table thead th {
+        background: var(--colour-primary);
+        color: #fff;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+
+    .data-table tbody tr:nth-child(even) {
+        background: #f8f9fc;
+    }
+
+.empty-cell {
+    text-align: center;
+    color: var(--colour-muted);
+    padding: 1.5rem;
+}
+
+.score-input {
+    width: 5.5rem;
+}
+
+.input-invalid {
+    border-color: var(--colour-error);
+    background: #fff4f3;
+}
+
+.field-error {
+    display: block;
+    color: var(--colour-error);
+    font-size: .78rem;
+    min-height: 1em;
+}
+
+.total-cell {
+    font-weight: 700;
+}
+
+/* Grades and status */
+.grade-badge {
+    display: inline-block;
+    min-width: 2rem;
+    padding: .1rem .4rem;
+    border-radius: 999px;
+    text-align: center;
+    font-weight: 700;
+    background: var(--colour-background);
+    color: var(--colour-muted);
+}
+
+.grade-A {
+    background: #dcf3e5;
+    color: #155c34;
+}
+
+.grade-B {
+    background: #e1ecfb;
+    color: #1d3c6e;
+}
+
+.grade-C {
+    background: #fdf3d7;
+    color: #7a5600;
+}
+
+.grade-D {
+    background: #fde9d7;
+    color: #8a4300;
+}
+
+.grade-F {
+    background: #fde2df;
+    color: #9b1c12;
+}
+
+.status-tag {
+    font-size: .82rem;
+    font-weight: 600;
+}
+
+.status-saved {
+    color: var(--colour-success);
+}
+
+.status-unsaved {
+    color: var(--colour-warning);
+}
+
+.status-invalid {
+    color: var(--colour-error);
+}
+
+.status-empty {
+    color: var(--colour-muted);
+}
+
+/* Summary */
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .75rem;
+    margin: 1.25rem 0;
+}
+
+    .summary-grid div {
+        background: var(--colour-background);
+        border-radius: var(--radius);
+        padding: .75rem;
+        border-left: 4px solid var(--colour-accent);
+    }
+
+    .summary-grid dt, .report-details dt {
+        font-size: .8rem;
+        color: var(--colour-muted);
+    }
+
+    .summary-grid dt {
+        text-transform: uppercase;
+        letter-spacing: .03em;
+    }
+
+    .summary-grid dd {
+        margin: 0;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--colour-primary);
+    }
+
+/* Batch paste and messages */
+.batch-panel {
+    border: 1px dashed var(--colour-border);
+    border-radius: var(--radius);
+    padding: .75rem 1rem;
+}
+
+    .batch-panel summary {
+        cursor: pointer;
+        font-weight: 600;
+        color: var(--colour-primary);
+    }
+
+    .batch-panel textarea {
+        margin-bottom: .5rem;
+        font-family: Consolas, "Courier New", monospace;
+    }
+
+.form-message {
+    margin: .5rem 0 0;
+    font-weight: 600;
+    min-height: 1.5em;
+}
+
+.message-success {
+    color: var(--colour-success);
+}
+
+.message-error {
+    color: var(--colour-error);
+}
+
+/* Report card */
+.report-card {
+    margin-top: 1.5rem;
+    border: 2px solid var(--colour-primary);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.5rem;
+}
+
+.report-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 2px solid var(--colour-accent);
+    padding-bottom: .75rem;
+    margin-bottom: 1rem;
+}
+
+    .report-header h3 {
+        margin: 0;
+        color: var(--colour-primary);
+    }
+
+.report-school {
+    margin: 0;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: var(--colour-muted);
+    font-size: .85rem;
+}
+
+.report-details {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .75rem;
+    margin: 0 0 1rem;
+}
+
+    .report-details dd {
+        margin: 0;
+        font-weight: 600;
+    }
+
+.report-summary {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.missing-note {
+    color: var(--colour-warning);
+    font-size: .9rem;
+}
+
+.overall-remark {
+    font-size: 1.1rem;
+}
+
+.comment-actions {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    margin-top: .5rem;
+}
+
+    .comment-actions .form-message {
+        margin: 0;
+    }
+
+.report-signature {
+    margin-top: 1.5rem;
+    font-style: italic;
+    color: var(--colour-muted);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+    .summary-grid, .report-summary, .report-details {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Phone */
+@media (max-width: 600px) {
+    .card, .report-card {
+        padding: 1rem;
+    }
+
+    .step-tracker {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .data-table thead {
+        display: none;
+    }
+
+    .data-table tr {
+        display: block;
+        border: 1px solid var(--colour-border);
+        border-radius: var(--radius);
+        margin-bottom: .75rem;
+        padding: .5rem;
+        background: #fff;
+    }
+
+    .data-table td {
+        display: grid;
+        grid-template-columns: 9rem 1fr;
+        align-items: center;
+        border: 0;
+        padding: .3rem .25rem;
+    }
+
+        .data-table td::before {
+            content: attr(data-label);
+            font-weight: 600;
+            color: var(--colour-muted);
+            font-size: .85rem;
+        }
+
+        .data-table td.empty-cell {
+            display: block;
+        }
+
+            .data-table td.empty-cell::before {
+                content: none;
+            }
+
+    .field-error {
+        grid-column: 2;
+    }
+
+    .report-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* Print */
+@media print {
+    body {
+        background: #fff;
+    }
+
+    .site-header, .site-footer, .welcome-banner,
+    #filterSection, #gradeEntrySection, #reportSection > h2,
+    #reportSection > .help-text, #reportForm, .no-print {
+        display: none !important;
+    }
+
+    .card {
+        box-shadow: none;
+        padding: 0;
+    }
+
+    .report-card {
+        margin: 0;
+        border: 0;
+    }
+
+    #teacherCommentInput {
+        border: 1px solid #999;
+    }
+}
